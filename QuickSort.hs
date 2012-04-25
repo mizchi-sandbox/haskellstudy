@@ -4,4 +4,12 @@ module Main where
   qsort (x:xs) =
     (qsort (filter (<x) xs)) ++ [x] ++ (qsort (filter (>=x) xs))
 
-  main = print (qsort [5,6,1,35,324,1342,234,2,432])
+  -- list
+  qsort2 :: [Int] -> [Int]
+  qsort2 [] = []
+  qsort2 (x:xs) =
+    qsort2 [a | a <-xs , a < x] ++ [x] ++ qsort2 [a | a <-xs , a >= x]
+
+  main = do
+    print (qsort [5,6,1,35,324,1342,234,2,432])
+
